@@ -5,6 +5,10 @@
 exec 2>&1
 
 . /etc/profile
+<% @options[:custom_env_files].each do |file| %>
+. <%= file %>
+<% end %>
+
 
 # Remove pidfile just incase it wasn't properly removed on shutdown.
 rm -f "<%= @options[:pidfile] %>"
